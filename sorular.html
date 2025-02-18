@@ -1,0 +1,182 @@
+<!-- Şifreli Giriş Sayfası -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifreli Giriş</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Password=</h2>
+    <input type="password" id="passwordInput" placeholder="Şifreyi girin">
+    <button onclick="checkPassword()">Giriş Yap</button>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            if (password === "poceanus123.") {
+                window.location.href = "odul.html";
+            } else {
+                alert("Yanlış şifre!");
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!-- Ödül Seçme Sayfası -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödül Seç</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hangi ödülü seçmek istersin?</h2>
+    <button onclick="selectReward('100000M Dolar')">100000M Dolar</button>
+    <button onclick="selectReward('Oğlunun Bir Deha Olması')">Oğlunun Bir Deha Olması</button>
+    <button onclick="selectReward('Pablo Escobarın Adamı Olmak')">Pablo Escobarın Adamı Olmak</button>
+    <script>
+        function selectReward(reward) {
+            alert("Seçimin: " + reward);
+            window.location.href = "sorular.html";
+        }
+    </script>
+</body>
+</html>
+
+<!-- Soru Sayfası -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorular</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        .question-container {
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="question-container">
+        <h2 id="question">Soru yükleniyor...</h2>
+        <div id="options"></div>
+    </div>
+    <script>
+        let questions = [
+            // Matematik Soruları
+            { question: "Bir üçgenin iç açıları toplamı kaç derecedir?", options: ["90", "180", "270", "360", "540", "450", "630", "720", "810", "900"], answer: "180" },
+            { question: "10 sayısının karekökü nedir?", options: ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], answer: "3.162" },
+            { question: "Bir dikdörtgenin alanı 15 cm² ve uzun kenarı 5 cm. Kısa kenarı kaç cm?", options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], answer: "3" },
+
+            // Fen Bilgisi Soruları
+            { question: "Su kaç derecede kaynar?", options: ["90°C", "100°C", "110°C", "120°C", "130°C", "140°C", "150°C", "160°C", "170°C", "180°C"], answer: "100°C" },
+            { question: "Fotosentez için hangi gaz gereklidir?", options: ["Oksijen", "Karbon Dioksit", "Amonyak", "Azot", "Karbondioksit", "Ozon", "Argon", "Kükürt", "Metan", "Hidrojen"], answer: "Karbon Dioksit" },
+            { question: "Hangi gezegen Güneş'e en yakın olandır?", options: ["Venüs", "Mars", "Jüpiter", "Satürn", "Merkür", "Uranüs", "Neptün", "Plüton", "Dünya", "Venüs"], answer: "Merkür" },
+
+            // Türkçe Soruları
+            { question: "Aşağıdaki cümlede hangi sözcük zarf olarak kullanılmıştır? 'Hızla koştu.'", options: ["Hızla", "Koştu", "Aşağıdaki", "Cümlede", "Zarf", "Kullanılmıştır", "Koşmak", "Hız", "Yavaş", "Hızlı"], answer: "Hızla" },
+            { question: "Bu cümlenin fiili nedir? 'Ali evde kitap okuyor.'", options: ["Evde", "Kitap", "Ali", "Okuyor", "Bu", "Cümlenin", "Fiili", "Evet", "Hayır", "Evdeki"], answer: "Okuyor" },
+            { question: "Hangisi en az kelime içerir?", options: ["Ali ve Ahmet", "Benim adım Ali", "Benim", "Ali", "Evde bir kitap var", "Ahmet ve Ali", "Ali ve Ayşe", "Kitaplar", "Ahmet", "Bütün"], answer: "Ali" },
+
+            // Genel Kültür Soruları
+            { question: "Türk milletinin ilk başkenti neresidir?", options: ["İstanbul", "Bursa", "Ankara", "Konya", "Eskişehir", "Çorum", "Sivas", "Aksaray", "Adana", "Edirne"], answer: "Bursa" },
+            { question: "Cumhuriyetin ilanı hangi yıldır?", options: ["1921", "1922", "1923", "1924", "1925", "1930", "1931", "1932", "1933", "1934"], answer: "1923" },
+            { question: "Hangi Türk padişahı 'Kanuni' olarak anılmaktadır?", options: ["Fatih Sultan Mehmet", "Yavuz Sultan Selim", "Kanuni Sultan Süleyman", "Osman Gazi", "I. Ahmet", "II. Mahmud", "IV. Murad", "II. Selim", "III. Murad", "II. Osman"], answer: "Kanuni Sultan Süleyman" },
+
+            // Tarih Soruları
+            { question: "Türk Kurtuluş Savaşı'nı hangi lider kazanmıştır?", options: ["İsmet İnönü", "Mustafa Kemal Atatürk", "Fevzi Çakmak", "Kazım Karabekir", "Ali Fuat Cebesoy", "Rauf Orbay", "Hüseyin Avni Ulaş", "Nihat Erim", "Reşit Galip", "Süleyman Şah"], answer: "Mustafa Kemal Atatürk" },
+            { question: "Osmanlı İmparatorluğu'nun ilk padişahı kimdir?", options: ["Orhan Gazi", "Fatih Sultan Mehmet", "Osman Gazi", "Yavuz Sultan Selim", "Süleyman", "II. Murad", "I. Ahmet", "II. Osman", "I. Selim", "IV. Murad"], answer: "Osman Gazi" },
+            { question: "Türk tarihinin en uzun süren savaşlarından biri olan 'Çanakkale Savaşı' hangi yıllarda gerçekleşmiştir?", options: ["1912-1913", "1913-1914", "1914-1915", "1915-1916", "1916-1917", "1917-1918", "1918-1919", "1919-1920", "1920-1921", "1921-1922"], answer: "1915-1916" },
+
+            // Genel Bilgiler
+            { question: "İlk Türk dilini yazılı hale getiren devlet hangisidir?", options: ["Göktürkler", "Selçuklular", "Osmanlılar", "Beylikler", "Büyük Selçuklular", "Büyük Türk İmparatorluğu", "Karahanlılar", "Gazneliler", "Karakhanlılar", "Türkler"], answer: "Göktürkler" },
+            { question: "Atatürk'ün doğum yılı nedir?", options: ["1880", "1881", "1890", "1891", "1892", "1883", "1884", "1885", "1886", "1887"], answer: "1881" },
+            { question: "İstanbul Boğazı'nı geçebilen ilk Türk padişahı kimdir?", options: ["Yavuz Sultan Selim", "Kanuni Sultan Süleyman", "Fatih Sultan Mehmet", "II. Selim", "III. Murad", "IV. Murad", "II. Mahmud", "II. Osman", "I. Ahmet", "Mustafa Kemal Atatürk"], answer: "Fatih Sultan Mehmet" }
+        ];
+
+        let currentQuestion = 0;
+
+        // Sayfa yenilenmeden önce soruları sıfırla
+        function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                alert("Tebrikler! Tüm soruları doğru bildiniz.");
+                return;
+            }
+            let q = questions[currentQuestion];
+            document.getElementById("question").innerText = q.question;
+            let optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+            q.options.forEach(option => {
+                let btn = document.createElement("button");
+                btn.innerText = option;
+                btn.onclick = function() { checkAnswer(option); };
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(answer) {
+            if (answer === questions[currentQuestion].answer) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                // Yanlış cevap verildiğinde ekranı siyah yap
+                document.body.style.backgroundColor = 'black';
+                document.body.innerHTML = '<div style="color: white; text-align: center;">Yanlış cevap verdiniz! Sayfa kapanacak...</div>';
+                
+                setTimeout(() => {
+                    window.location.href = 'https://google.com'; // Yönlendirme URL'si
+                }, 2000); // 2 saniye sonra yönlendirme
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifreli Giriş</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Password=</h2>
+    <input type="password" id="passwordInput" placeholder="Şifreyi girin">
+    <button onclick="checkPassword()">Giriş Yap</button>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            if (password === "poceanus123.") {
+                window.location.href = "odul.html";
+            } else {
+                alert("Yanlış şifre!");
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!-- Ödül Seçme Sayfası -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödül Seç</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hangi ödülü seçmek istersin?</h2>
+    <button onclick="selectReward('100000M Dolar')">100000M Dolar</button>
+    <button onclick="selectReward('Oğlunun Bir Deha Olması')">Oğlunun Bir Deha Olması</button>
+    <button onclick="selectReward('Pablo Escobarın Adamı Olmak')">Pablo Escobarın Adamı Olmak</button>
+    <script>
+        function selectReward(reward) {
+            alert("Seçimin: " + reward);
+            window.location.href = "sorular.html";
+        }
+    </script>
+</body>
+</html>
